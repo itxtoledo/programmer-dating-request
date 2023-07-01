@@ -70,30 +70,28 @@
     </div>
   </body>
   <script>
-    const naoButton = document.getElementById("nao");
-    const simButton = document.getElementById("sim");
+    document.addEventListener("DOMContentLoaded", function () {
+      const naoButton = document.getElementById("nao");
+      const simButton = document.getElementById("sim");
 
-    simButton.addEventListener("click", () => {
-      alert("Te amo!");
+      simButton.addEventListener("click", function () {
+        alert("Te amo!");
+      });
+
+      const handleNao = function () {
+        naoButton.style.position = "fixed";
+
+        const randTop =
+          Math.random() * (window.innerHeight - naoButton.offsetHeight);
+        const randLeft =
+          Math.random() * (window.innerWidth - naoButton.offsetWidth);
+
+        naoButton.style.top = randTop + "px";
+        naoButton.style.left = randLeft + "px";
+      };
+
+      naoButton.addEventListener("click", handleNao);
+      naoButton.addEventListener("mouseover", handleNao);
     });
-
-    const handleNao = () => {
-      naoButton.style.position = "fixed";
-
-      const rand = Math.random();
-
-      const randTop =
-        (rand * window.innerHeight) %
-        (window.innerHeight - naoButton.offsetHeight);
-      const randLeft =
-        (window.innerWidth * rand * 10) %
-        (window.innerWidth - naoButton.offsetWidth);
-
-      naoButton.style.top = `${randTop}px`;
-      naoButton.style.left = `${randLeft}px`;
-    };
-
-    naoButton.addEventListener("click", handleNao);
-    naoButton.addEventListener("mouseover", handleNao);
   </script>
 </html>
